@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>상품수정</title>
+  <link rel="stylesheet" href="" th:href="@{/css/common.css}">
+</head>
+
+<body>
+  <div class="wrap">
+    <h3>상품수정</h3>
+    <div>
+      <form id="frm" action="" method="post" th:object="${updateForm}">
+        <div>
+          <label for="productId">상품번호</label>
+          <input type="text" name="productId" readonly th:field="*{productId}">
+        </div>
+        <div>
+          <label for="pname">상품명</label>
+          <input type="text" name="pname" th:field="*{pname}">
+          <span class="field-error"></span>
+          <span class="field-error" th:errors="*{pname}"></span>
+        </div>
+        <div>
+          <label for="quantity">수량</label>
+          <input type="text" name="quantity" th:field="*{quantity}">
+          <span class="field-error"></span>
+          <span class="field-error" th:errors="*{quantity}"></span>
+        </div>
+        <div>
+          <label for="price">가격</label>
+          <input type="text" name="price" th:field="*{price}">
+          <span class="field-error"></span>
+          <span class="field-error" th:errors="*{price}"></span>
+        </div>
+        <div>
+          <button type="submit" id="btnSave">저장</button>
+          <button type="button" id="btnCancel">취소</button>
+          <button type="button" id="btnFindAll">목록</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <script type="text/javascript" th:src="@{/js/updateForm.js}"></script>
+</body>
+
+</html>

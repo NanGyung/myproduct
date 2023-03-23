@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>상품등록</title>
+  <link rel="stylesheet" th:href="@{/css/common.css}">
+</head>
+
+<body>
+  <form id="frm" action="" method="post" th:object="${saveForm}">
+    <div th:if="${#fields.hasGlobalErrors()}">
+      <p class="field-error" th:each="err:${#fields.globalErrors()}" th:text="${err}"></p>
+    </div>
+    <div>
+      <label for="pname" th:for="${#ids.next('pname')}">상품명</label>
+      <input type="text" name="pname" th:field="*{pname}" minlength="2" maxlength="10">
+      <span class="field-error"></span>
+      <span class="field-error" th:errors="*{pname}"></span>
+    </div>
+    <div>
+      <label for="quantity" th:for="${#ids.next('quantity')}">수량</label>
+      <input type="text" name="quantity" th:field="*{quantity}" minlength="1" maxlength="10">
+      <span class="field-error"></span>
+      <span class="field-error" th:errors="*{quantity}"></span>
+    </div>
+    <div>
+      <label for="price" th:for="${#ids.next('price')}">가격</label>
+      <input type="text" name="price" th:field="*{price}" minlength="1" maxlength="10">
+      <span class="field-error"></span>
+      <span class="field-error" th:errors="*{price}"></span>
+    </div>
+    <div>
+      <button type="submit" id="btnAdd">등록</button>
+      <button type="button" onclick="location.href='/products'">목록</button>
+    </div>
+  </form>
+  <script type="text/javascript" th:src="@{/js/saveForm.js}"></script>
+</body>
+
+</html>
