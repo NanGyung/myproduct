@@ -15,27 +15,27 @@ public interface ProductDAO {
 
   /**
    * 조회
-   * @param productId 상품아이디
+   * @param pid 상품아이디
    * @return 상품
    */
-  Optional<Product> findById(Long productId);
+  Optional<Product> findById(Long pid);
 
   
   /**
    * 수정
-   * @param productId 상품아이디
+   * @param pid 상품아이디
    * @param product 수정할 상품
    * @return 수정된 레코드 수
    */
-  int update(Long productId, Product product);
+  int update(Long pid, Product product);
 
 
   /**
    * 삭제
-   * @param productId 상품아이디
+   * @param pid 상품아이디
    * @return 삭제된 레코드 수
    */
-  int delete(Long productId);
+  int delete(Long pid);
 
 
   /**

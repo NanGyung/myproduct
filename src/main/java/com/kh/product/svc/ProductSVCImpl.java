@@ -28,35 +28,35 @@ public class ProductSVCImpl implements ProductSVC{
   /**
    * 조회
    *
-   * @param productId 상품아이디
+   * @param pid 상품아이디
    * @return 상품
    */
   @Override
-  public Optional<Product> findById(Long productId) {
-    return productDAO.findById(productId);
+  public Optional<Product> findById(Long pid) {
+    return productDAO.findById(pid);
   }
 
   /**
    * 수정
    *
-   * @param productId 상품아이디
+   * @param pid 상품아이디
    * @param product   수정할 상품
    * @return 수정된 레코드 수
    */
   @Override
-  public int update(Long productId, Product product) {
-    return productDAO.update(productId,product);
+  public int update(Long pid, Product product) {
+    return productDAO.update(pid,product);
   }
 
   /**
    * 삭제
    *
-   * @param productId 상품아이디
+   * @param pid 상품아이디
    * @return 삭제된 레코드 수
    */
   @Override
-  public int delete(Long productId) {
-    return productDAO.delete(productId);
+  public int delete(Long pid) {
+    return productDAO.delete(pid);
   }
 
   /**

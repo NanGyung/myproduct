@@ -16,20 +16,17 @@
     </div>
     <div>
       <label for="pname" th:for="${#ids.next('pname')}">상품명</label>
-      <input type="text" name="pname" th:field="*{pname}" minlength="2" maxlength="10">
-      <span class="field-error"></span>
+      <input type="text" name="pname" th:field="*{pname}">
       <span class="field-error" th:errors="*{pname}"></span>
     </div>
     <div>
       <label for="quantity" th:for="${#ids.next('quantity')}">수량</label>
-      <input type="text" name="quantity" th:field="*{quantity}" minlength="1" maxlength="10">
-      <span class="field-error"></span>
+      <input type="text" name="quantity" th:field="*{quantity}">
       <span class="field-error" th:errors="*{quantity}"></span>
     </div>
     <div>
       <label for="price" th:for="${#ids.next('price')}">가격</label>
-      <input type="text" name="price" th:field="*{price}" minlength="1" maxlength="10">
-      <span class="field-error"></span>
+      <input type="text" name="price" th:field="*{price}">
       <span class="field-error" th:errors="*{price}"></span>
     </div>
     <div>

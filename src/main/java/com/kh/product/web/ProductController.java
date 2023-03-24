@@ -47,25 +47,21 @@ public class ProductController {
       return "product/saveForm";
     }
 
-    // 필드오류
-    if(saveForm.getQuantity() == 100){
-      bindingResult.rejectValue("quantity","product");
-    }
-
-    // 글로벌오류
-    // 총액(상품수량*단가) 1000만원 초과금지
-    if(saveForm.getQuantity() * saveForm.getPrice() > 10_000_000L){
-      bindingResult.reject("totalprice",new String[]{"1000"},"");
-    }
-
-    if(saveForm.getQuantity() > 1 && saveForm.getQuantity() <10){
-      bindingResult.reject("quantity",new String[]{"1","2"},"");
-    }
-
     if(bindingResult.hasErrors()){
       log.info("bindingResult={}", bindingResult);
       return "product/saveForm";
     }
+
+    // 상품가격 1000원 이상
+    if(saveForm.getPrice() < 1000L){
+      bindingResult.reject("price",new String[]{"1000"},"상품가격은 1000원 이상이어야 합니다.");
+    }
+
+    // 총액(상품수량*단가) 1억원 초과금지
+    if(saveForm.getQuantity() * saveForm.getPrice() > 100_000_000L){
+      bindingResult.reject("totalprice",new String[]{"100_000_000"},"총액은 1억원을 초과할 수 없습니다.");
+    }
+
 
     // 등록
     Product product = new Product();
@@ -89,12 +85,15 @@ public class ProductController {
     Product product = findedProduct.orElseThrow();
 
     DetailForm detailForm = new DetailForm();
-    detailForm.setProductId(product.getProductId());
+    detailForm.setPid(product.getPid());
     detailForm.setPname(product.getPname());
     detailForm.setQuantity(product.getQuantity());
     detailForm.setPrice(product.getPrice());
 
     model.addAttribute("detailForm",detailForm);
+
+//    log.info("deatilForm = {}",detailForm);
+
     return "product/detailForm";
   }
   
@@ -108,7 +107,7 @@ public class ProductController {
     Product product = findedProduct.orElseThrow();
 
     UpdateForm updateForm = new UpdateForm();
-    updateForm.setProductId(product.getProductId());
+    updateForm.setPid(product.getPid());
     updateForm.setPname(product.getPname());
     updateForm.setQuantity(product.getQuantity());
     updateForm.setPrice(product.getPrice());
@@ -131,9 +130,13 @@ public class ProductController {
       return "product/updateForm";
     }
 
-    //정상처리
+    // 상품가격 1000원 이상
+    if(updateForm.getPrice() < 1000L){
+      bindingResult.reject("price",new String[]{"1000"},"상품가격은 1000원 이상이어야 합니다.");
+    }
+
     Product product = new Product();
-    product.setProductId(productId);
+    product.setPid(productId);
     product.setPname(updateForm.getPname());
     product.setQuantity(updateForm.getQuantity());
     product.setPrice(updateForm.getPrice());
