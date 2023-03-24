@@ -7,6 +7,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>상품수정</title>
   <link rel="stylesheet" href="" th:href="@{/css/common.css}">
+  <style>
+    .btns{
+      margin-top: 10px;
+    }
+  </style>
 </head>
 
 <body>
@@ -33,7 +38,7 @@
           <input type="text" name="price" th:field="*{price}">
           <span class="field-error" th:errors="*{price}"></span>
         </div>
-        <div>
+        <div class="btns">
           <button type="submit" id="btnSave">저장</button>
           <button type="button" id="btnCancel">취소</button>
           <button type="button" id="btnFindAll">목록</button>

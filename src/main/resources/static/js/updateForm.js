@@ -11,7 +11,6 @@ $btnFindAll.addEventListener('click', btnFindAll_h, false);
 
 const add_h = e => {
     e.preventDefault();
-
     frm.submit();
 }
 $btnSave.addEventListener('click', add_h, false);

@@ -7,6 +7,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>상품등록</title>
   <link rel="stylesheet" th:href="@{/css/common.css}">
+  <style>
+    .btns{
+      margin-top: 10px;
+    }
+  </style>
 </head>
 
 <body>
@@ -29,7 +34,7 @@
       <input type="text" name="price" th:field="*{price}">
       <span class="field-error" th:errors="*{price}"></span>
     </div>
-    <div>
+    <div class="btns">
       <button type="submit" id="btnAdd">등록</button>
       <button type="button" onclick="location.href='/products'">목록</button>
     </div>

@@ -14,5 +14,6 @@ public class SaveForm {
 
   @NotNull
   @Positive
+  @Min(1000)
   private Long price;
 }

@@ -121,7 +121,7 @@ public class ProductDAOImpl implements ProductDAO{
       BeanPropertyRowMapper.newInstance(Product.class)
     );
 
-    log.info("list={}",list);
+//    log.info("list={}",list);
     return list;
   }
 

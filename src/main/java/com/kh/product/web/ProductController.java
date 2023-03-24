@@ -40,28 +40,21 @@ public class ProductController {
       BindingResult bindingResult,
       RedirectAttributes redirectAttributes
   ){
-    log.info("saveForm={}",saveForm);
     //데이터검증
     if(bindingResult.hasErrors()){
       log.info("bindingResult={}", bindingResult);
       return "product/saveForm";
     }
 
+    // 총액(상품수량*단가) 1억원 초과금지
+    if(saveForm.getQuantity() * saveForm.getPrice() > 100_000_000L){
+      bindingResult.reject("totalPrice",new String[]{"100_000_000"},"총액은 {0}원을 초과할 수 없습니다.");
+    }
+
     if(bindingResult.hasErrors()){
       log.info("bindingResult={}", bindingResult);
       return "product/saveForm";
     }
-
-    // 상품가격 1000원 이상
-    if(saveForm.getPrice() < 1000L){
-      bindingResult.reject("price",new String[]{"1000"},"상품가격은 1000원 이상이어야 합니다.");
-    }
-
-    // 총액(상품수량*단가) 1억원 초과금지
-    if(saveForm.getQuantity() * saveForm.getPrice() > 100_000_000L){
-      bindingResult.reject("totalprice",new String[]{"100_000_000"},"총액은 1억원을 초과할 수 없습니다.");
-    }
-
 
     // 등록
     Product product = new Product();
@@ -91,8 +84,6 @@ public class ProductController {
     detailForm.setPrice(product.getPrice());
 
     model.addAttribute("detailForm",detailForm);
-
-//    log.info("deatilForm = {}",detailForm);
 
     return "product/detailForm";
   }
@@ -128,11 +119,6 @@ public class ProductController {
     if(bindingResult.hasErrors()){
       log.info("bindingResult={}",bindingResult);
       return "product/updateForm";
-    }
-
-    // 상품가격 1000원 이상
-    if(updateForm.getPrice() < 1000L){
-      bindingResult.reject("price",new String[]{"1000"},"상품가격은 1000원 이상이어야 합니다.");
     }
 
     Product product = new Product();
