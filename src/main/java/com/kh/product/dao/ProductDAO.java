@@ -37,6 +37,18 @@ public interface ProductDAO {
    */
   int delete(Long pid);
 
+  /**
+   * 부분삭제
+   * @param pids
+   * @return
+   */
+  int deleteParts(List<Long> pids);
+
+  /**
+   * 전체 삭제
+   * @return 삭제한 레코드 건수
+   */
+  int deleteAll();
 
   /**
    * 목록
@@ -44,4 +56,16 @@ public interface ProductDAO {
    */
   List<Product> findAll();
 
+  /**
+   * 상품존재유무
+   * @param pid 상품아이디
+   * @return
+   */
+  boolean isExist(Long pid);
+
+  /**
+   * 등록된 상품수
+   * @return 레코드 건수
+   */
+  int countOfRecord();
 }

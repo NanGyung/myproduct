@@ -60,6 +60,17 @@ public class ProductSVCImpl implements ProductSVC{
   }
 
   /**
+   * 부분삭제
+   *
+   * @param pids
+   * @return
+   */
+  @Override
+  public int deleteParts(List<Long> pids) {
+    return productDAO.deleteParts(pids);
+  }
+
+  /**
    * 목록
    *
    * @return 상품목록
@@ -68,4 +79,16 @@ public class ProductSVCImpl implements ProductSVC{
   public List<Product> findAll() {
     return productDAO.findAll();
   }
+
+  /**
+   * 상품존재유무
+   *
+   * @param pid 상품아이디
+   * @return
+   */
+  @Override
+  public boolean isExist(Long pid) {
+    return productDAO.isExist(pid);
+  }
+
 }

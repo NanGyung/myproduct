@@ -9,7 +9,7 @@ create table product(
 alter table product add constraint product_pid_pk primary key(pid);
 
 --시퀀스생성
-drop sequence product_pid_seq;
+drop sequence product_product_id_seq;
 create sequence product_pid_seq;
 
 commit;

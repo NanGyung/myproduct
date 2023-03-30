@@ -38,11 +38,24 @@ public interface ProductSVC {
    */
   int delete(Long pid);
 
+  /**
+   * 부분삭제
+   * @param pids
+   * @return
+   */
+  int deleteParts(List<Long> pids);
 
   /**
    * 목록
    * @return 상품목록
    */
   List<Product> findAll();
+
+  /**
+   * 상품존재유무
+   * @param pid 상품아이디
+   * @return
+   */
+  boolean isExist(Long pid);
 
 }
