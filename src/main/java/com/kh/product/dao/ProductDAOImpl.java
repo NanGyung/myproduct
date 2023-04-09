@@ -170,4 +170,6 @@ public class ProductDAOImpl implements ProductDAO{
     Integer rows = template.queryForObject(sql, param, Integer.class);
     return rows;
   }
+
+
 }
